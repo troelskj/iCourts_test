@@ -22,7 +22,7 @@ votes = []
 
 def create_db(tableOfTuples):
 	
-	db = sqlite3.connect('metadata4.db')
+	db = sqlite3.connect('metadata.db')
 	d = db.cursor()
 	db.text_factory = str
 
@@ -224,7 +224,7 @@ def create_db_votes(tableOfTuples,database="metadata.db"):
 organizer(sys.argv[1])  # = task 1, specify csv file
 create_db(cases) # = task 2
 
-##pdfConverter(folder)
+##pdfConverter(folder)   
 
 # task 3
 texthandler(sys.argv[2])  #specify folder for txt files
