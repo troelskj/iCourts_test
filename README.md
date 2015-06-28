@@ -18,6 +18,16 @@ documents contain data from task one. The structure is:
 
 id, date, case_name, case_number, file_number, parties, ruling
 
+The first 5 rows of documents:
+<code>
+sqlite> SELECT * FROM documents LIMIT 5 ;
+id|date|case_name|case_number|file_number|parties|ruling
+1|13/12/2013|Construction of a Road in Costa Rica along the San Juan River|152|17838|Nicaragua v. Costa Rica|Order
+2|09/12/2013|Question of the Delimitation of the Continental Shelf between Nicaragua and Colombia beyond 200 nautical miles from the Nicaraguan Coast|154|17916|Nicaragua v. Colombia|Order
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order
+4|11/11/2013|Request for Interpretation of the Judgment of 15 June 1962 in the Case concerning the Temple of Preah Vihear|151|17704|Cambodia v. Thailand|Judgment
+5|13/09/2013|Aerial Herbicide Spraying|138|17528|Ecuador v. Colombia|Order</code>
+
 
 <h2>Task 3:</h2>
 
@@ -27,6 +37,17 @@ After struggling with pyPDF2 and PDFMiner for some time I decided to use pdftote
 The files were added to a folder called "convertedDocs/" and named after their original file with a change in the extension from ".pdf" to ".txt".
 
 I created a new table in "metadata.db" for this task called votations.
+
+The first 5 rows of votations
+
+<code>sqlite> SELECT * FROM votation LIMIT 5 ;
+file_number|votation_number|vote|name|title
+11235|1|IN FAVOUR|Higgins|President
+11235|1|IN FAVOUR|Al-Khasawneh|Vice-President
+11235|1|IN FAVOUR|Koroma,|Judge
+11235|1|IN FAVOUR|Parra-Aranguren,|Judge
+11235|1|IN FAVOUR|Buergenthal,|Judge</code>
+
 
 My solutions seems to prefer IN FAVOUR from AGAINST. I think a more intelligent indication for when the name listings have stopped will help. 
 
@@ -39,11 +60,23 @@ Tables documents and votations are joined to one table using NATURAL JOIN as fil
 
 <code>CREATE TABLE docsandvotes AS SELECT * FROM documents NATURAL JOIN votation;</code>
 
+The first 5 rows of docsandvotes:
+
+<code>sqlite> SELECT * FROM docsandvotes LIMIT 5 ;
+id|date|case_name|case_number|file_number|parties|ruling|votation_number|vote|name|title
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order|1|AGAINST|Guillaume|Judge ad hoc
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order|1|IN FAVOUR|Bennouna,|Judge
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order|1|IN FAVOUR|Bhandari|Judge
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order|1|IN FAVOUR|Cançado|Judge
+3|22/11/2013|Certain Activities carried out by Nicaragua in the Border Area|150|17772|Costa Rica v. Nicaragua|Order|1|IN FAVOUR|Donoghue,|Judge</code>
+
+
 Using SELECT and WHERE methods I have created two CSV files to be used in the visualization:
 
 <code>sqlite3 -header -csv metadata.db "SELECT * FROM docsandvotes WHERE ruling<>'Order' AND title='President';" > presidentsonly_advisoryandjudgments.csv</code>
 
 <code>sqlite3 -header -csv metadata.db "SELECT * FROM docsandvotes WHERE ruling<>'Order' ;" > advisoryandjudgments.csv</code>
+
 
 I have uploaded these CSV files to Google's Fusion API where I also made the visualizations.
 
