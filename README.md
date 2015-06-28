@@ -44,6 +44,7 @@ Using SELECT and WHERE methods I have created two CSV files to be used in the vi
 I have made the visualizations using Google's Fusion API.
 
 Advisory and jugments chart can be seen here: https://www.google.com/fusiontables/DataSource?docid=1DQC5tKOzAcEt1_L1BUgUKfv6f9Fzo8zS6IUnAmMc
+
 Presidents only can be seen here: https://www.google.com/fusiontables/DataSource?docid=1edRzB3aNvonn9gkf_dGp2hXTSJ7BsSHUdoJVXDo_
 
 The presidents only shows that some cases seems to have more than one president, e.g. case number 124
