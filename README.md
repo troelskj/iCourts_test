@@ -1,13 +1,13 @@
-Notes:
+<h1>Notes:</h1>
 
 
-Task 1:
+<h2>Task 1:</h2>
 
 
 I took a shortcut and converted the xlsx file to a csv file. That made it much easier to work with the data, as I could focus on python's string methods and not struggle with a third party module for accessing the xslx.
 
 
-Task 2:
+<h2>Task 2:</h2>
 
 
 I created an sqlite database called "metadata.db". SQLite was chosen for the easy integration with python 2.7
@@ -19,7 +19,7 @@ documents contain data from task one. The structure is:
 id, date, case_name, case_number, file_number, parties, ruling
 
 
-Task 3:
+<h2>Task 3:</h2>
 
 
 After struggling with pyPDF2 and PDFMiner for some time I decided to use pdftotext from xpdf to do the conversion from pdf to txt. 
@@ -32,7 +32,7 @@ My solutions seems to prefer IN FAVOUR from AGAINST. I think a more intelligent 
 
 
 
-Task 4:
+<h2>Task 4:</h2>
 
 
 Tables documents and votations are joined to one table using Natural Join as file name is a column in both tables. 
@@ -50,12 +50,12 @@ Presidents only can be seen here: https://www.google.com/fusiontables/DataSource
 The presidents only shows that some cases seems to have more than one president, e.g. case number 124
 
 
-Task 5:
+<h2>Task 5:</h2>
 
 
 
 
-Suggested improvements:
+<h2>Suggested improvements:</h2>
 
 
 Give pyPDF2 and PDFMiner another go and check if more texts will be readable (e.g. including spaces between words and removing spaces between letters). Furthermore introduce OCR software to make the last files readable for my script.
